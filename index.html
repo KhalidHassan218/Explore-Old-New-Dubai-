@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome To Dubai</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <header>
+<h1>Dubai</h1>
+<ul>
+<li><a class="active" href="#">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#"> Work</a></li>
+<li><a href="#" >Contact</a></li>
+
+</ul>
+
+    </header>
+    <section>
+<img src="./Explore Dubai/old dubai 3.jpg" id="old-dubai" alt="">
+<h1 class="scroll"> Scroll to New Dubai</h1>
+<img src="./Explore Dubai/frame of dubai.png" id="frame" alt="">
+<h1 class="logo">dubai</h1>
+<h1 class="logo-arabic">دبي</h1>
+
+
+    </section>
+
+
+    <script>
+let frame = document.querySelector("#frame")
+let oldDubai = document.querySelector('#old-dubai')
+let englishDubai = document.querySelector('.logo')
+let arabicDubai = document.querySelector('.logo-arabic')
+
+englishDubai.style.display="none"
+arabicDubai.style.display="none"
+window.addEventListener('scroll',function(){
+let value = window.scrollY;
+if(value > 100 && !(value > 3100)){
+document.querySelector('.scroll').classList.add('fade');
+}
+else{
+    document.querySelector('.scroll').classList.remove('fade')
+}
+if(value < 1200){
+englishDubai.style.display="none"
+arabicDubai.style.display="none"
+frame.style.width=1800 - value + 'px';
+frame.style.height = 1200 - value*0.5 + 'px';
+oldDubai.style.width=screen.width -value + 'px'
+oldDubai.style.height=screen.height -value*0.5 + 'px'
+document.querySelector('.scroll').innerHTML='Scroll to New Dubai'
+
+
+
+}
+else{
+englishDubai.style.display="block"
+arabicDubai.style.display="block"
+englishDubai.style.left=270 + ((value-1200)*1.5) +'px'
+arabicDubai.style.right = 0 + ((value-1200)*1.5) + 'px'
+oldDubai.setAttribute('src','./Explore Dubai/old dubai 3.jpg')
+
+}
+if(value >1400){
+    oldDubai.setAttribute('src',"./Explore Dubai/new dubai.jpg")
+
+}
+if(value > 2000 && value <3200){
+    frame.style.width = 601 + (value-2000) + 'px'
+    frame.style.height = 600 + (value-2000)*0.5 +'px'
+    oldDubai.style.width = 339 + (value-2000) +'px'
+    oldDubai.style.height = 265 +(value-2000)*0.5 +'px'
+    document.querySelector('.scroll').innerHTML="Welcome To New DUBAI"
+}
+
+
+
+
+})
+
+
+    </script>
+</body>
+</html>
